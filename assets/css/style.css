@@ -301,7 +301,9 @@ a:hover small {
 
 .wrapper {
   width: 1040px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding-top: 60px;
+}
 
 blockquote {
   border-left: 1px solid #e5e5e5;
@@ -358,81 +360,92 @@ header {
   padding-right: 20px;
   text-align: center;
   overflow-y: auto; /* 添加纵向滚动条 */
+  margin-top: 0;
   /* padding-bottom: 50px; */
 }
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  margin: 0;
+  padding: 0.5em 0;
+  border-radius: 0 0 8px 8px;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
 
-  .sidebar {
-    /* height: 35%; */
-    width: 70%;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #f4f4f4;
-    margin-bottom: 100px;
-    padding-top: 5px;
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    padding: 3px;
-  }
-  
-  .sidebar a {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-    font-size: 18px;
-    white-space: nowrap;
-  }
-  
-  .sidebar a:hover {
-    background-color: #555;
-  }
-/* header ul {
-  list-style: none;
-  height: 200px;
+.sidebar ul {
+  list-style-type: none;
   padding: 0;
-  background: #f4f4f4;
-  border-radius: 5px;
-  border: 1px solid #e0e0e0;
-  width: 140px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sidebar li {
+  padding: 0 18px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #6c757d;
+  font-size: 17px;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+  font-weight: 500;
+  padding: 0 0 0.2em 0;
+  border: none;
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);} */
+  display: inline-block;
+}
 
-  
-/* header li {
-  width: 140px;
-  float: left;
-  border-right: 1px solid #e0e0e0;
-  height: 33px; } */
+.sidebar a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 5px;
+  background: #bfc3c7;
+  border-radius: 2px;
+  transition: width 0.3s;
+  margin: 0 auto;
+}
 
-  /* header ul {
-    list-style: none;
-    height: 40px;
-    padding: 0;
-    background: #f4f4f4;
-    border-radius: 5px;
-    border: 1px solid #e0e0e0;
-    width: 270px; }
-  
-  header li {
-    width: 89px;
-    float: left;
-    border-right: 1px solid #e0e0e0;
-    height: 40px; }
-   */
-  
+.sidebar a:hover::after,
+.sidebar a:focus::after {
+  width: 60%;
+}
 
-/* nav ul li a:hover {
-  font-size: 18px; 
-}  */
+.sidebar a.active::after {
+  width: 60%;
+}
 
+/* 可选：点击后高亮 */
+.sidebar a.active,
+.sidebar a:active {
+  color: #495057;
+}
 
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background-color: #222;
+    border-color: #404040;
+  }
+  .sidebar a {
+    color: #d6d6d6;
+  }
+  .sidebar a::after {
+    background: #888;
+  }
+  .sidebar a.active,
+  .sidebar a:active {
+    color: #fff;
+  }
+}
 
 header li:first-child a {
   border-radius: 5px 0 0 5px; }
@@ -449,7 +462,6 @@ header ul a {
   padding-top: 6px;
   height: 34px; }
 
-
 header ul a:hover {
   color: #999; }
 
@@ -463,9 +475,6 @@ strong {
 @media (prefers-color-scheme: dark) {
   strong {
     color: #eeeff0; } }
-/* header ul li + li + li {
-  border-right: none;
-  width: 89px; } */
 
 header ul a strong {
   font-size: 14px;
@@ -604,6 +613,10 @@ footer {
   margin-left: 0px;
   display: none;
   font-family: monospace; }
+
+h2[id], h3[id] {
+  scroll-margin-top: 70px;
+}
 
 
     
